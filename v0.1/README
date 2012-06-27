@@ -1,0 +1,112 @@
+      $ end.py:27.Jun
+ [ - - - - - - - - - - - - ]
+           README
+
+ ========
+ $ ABOUT
+ ========
+ What is this project about?
+
+ This project also called "process killer" is a Python script that kills specified processes in
+Linux via the tool `kill' and `killall' with the `-9' flag. It makes use of shortcuts defined at
+line #39 (for version 0.1) by using a dictionary. This is very useful in case you need a quick
+kill by launching your terminal and quickly execute the script only telling the shortcut, e.g.:
+
+    $> ./end.py s
+    [i] Number of options detected: 1
+    [+] Engines online.
+    ============================================================
+    [s] Skype shortcut detected. Killing "skype" with -9
+    ============================================================
+
+    [+] We are done.
+
+    [+] Shutting down ...  [ OK ]
+
+
+ In case the process is not opened or/and it could not be killed, tool `kill' (or `killall')
+reports the following statement, "pidgin(in this case): no process killed" (Python writes in
+the console using stdout):
+
+    $> ./end.py p
+    [i] Number of options detected: 1
+    [+] Engines online.
+    ============================================================
+    [s] Pidgin shortcut detected. Killing "pidgin" with -9
+    pidgin: no process killed
+    ============================================================
+
+    [+] We are done.
+
+    [+] Shutting down ...  [ OK ]
+
+
+ For more flexibility and quickness you can also put the script under '/usr/local/bin/' and in your
+.bashrc (in case your system uses .bashrc) specify the following line:
+
+      # User specific aliases and functions
+      alias pk="end.py"
+
+ From now on you can write in the console "pk <process>" where <process> is the process name you want to
+kill, e.g.:
+    $> pk akregator
+    [i] Number of options detected: 1
+    [+] Engines online.
+    ============================================================
+    [i] Killing with -9: akregator
+    ============================================================
+
+    [+] We are done.
+
+    [+] Shutting down ...  [ OK ]
+
+ But be advised that this was only tested on RedHat based/similar systems like CentOS and the Fedora Project;
+it may be different under other Linux Distributions (though it should be almost the same).
+
+
+ To add more shortcuts at your own pleasure, edit the line that defines them (it is the variable "shortcut",
+which specifies the dictionary to use). If we would want to add the process vlc to shortcuts, we would do:
+
+  Line #39: shortcut = {'s': 'skype', 'p': 'pidgin'}      # original line
+
+  Line #39: shortcut = {'s': 'skype', 'p': 'pidgin', 'v': 'vlc'}    # new shortcut for 'vlc' added
+
+where 'v' stands for the shortcut, and 'vlc' for the process name that will be killed. vlc is the actual name
+of the process that will be passed to kill -9 so:
+
+ [!] NOTE: Be careful what you kill and pay attention to some processes that do not use their entire name when
+they spawn or fork, for example, the SSH server is not "ssh", but rather "sshd" which stands for "ssh daemon".
+
+
+ process killer project is open and opensource for everybody letting them to modify,create and export it.
+ process killer project is registered under the GNU/GPL (GNU General Public License), see LICENSE for
+ more details.
+
+ Note that it may also come with various codenames (see below the changelog).
+
+ If you want to contact me go to the end of this file. I hope it is/was useful for you. Enjoy!
+
+
+
+
+ ============
+ $ CHANGELOG
+ ============
+
+ ===============================
+ v0.1 [25.Jun] - codename "Zeus"
+ ===============================
+ - initial release (more functionality and flexiblity will be added in the future to the program).
+
+
+
+
+Best regards,
+|r
+
+
+P.S.:
+    If you find any issues send them to me at roeglobal@insicuri.net and use my public PGP key (else no reply):
+        http://sprunge.us/UNOC
+
+$EOF
